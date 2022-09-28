@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="MicroElements.Swashbuckle.NodaTime" Version="4.0.1" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.9" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.9" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.9">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="NetTopologySuite.IO.GeoJSON" Version="2.0.4" />
+        <PackageReference Include="NetTopologySuite.IO.GeoJSON4STJ" Version="2.1.1" />
+        <PackageReference Include="NodaTime.Serialization.SystemTextJson" Version="1.0.0" />
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.7" />
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL.NetTopologySuite" Version="6.0.7" />
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL.NodaTime" Version="6.0.7" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\BurgerFanatics.Api.Attachments\BurgerFanatics.Api.Attachments.csproj" />
+      <ProjectReference Include="..\BurgerFanatics.Api.Locations\BurgerFanatics.Api.Locations.csproj" />
+      <ProjectReference Include="..\BurgerFanatics.Api.Restaurants\BurgerFanatics.Api.Restaurants.csproj" />
+      <ProjectReference Include="..\BurgerFanatics.Contracts\BurgerFanatics.Contracts.csproj" />
+      <ProjectReference Include="..\BurgerFanatics.Domain\BurgerFanatics.Domain.csproj" />
+      <ProjectReference Include="..\BurgerFanatics.Infrastructure\BurgerFanatics.Infrastructure.csproj" />
+      <ProjectReference Include="..\BurgerFanatics.Api.Users\BurgerFanatics.Api.Users.csproj" />
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,39 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgis/postgis
+    environment:
+      POSTGRES_PASSWORD: example
+    volumes:
+      - ./db_scripts:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    ports:
+      - 5432:5432
+
+  migrations:
+    build: 
+      context: backend
+      dockerfile: BurgerFanatics.DbMigrations/Dockerfile
+    restart: on-failure
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - POSTGRES=${POSTGRES}
+
+  backend:
+    build: 
+      context: backend
+      dockerfile: BurgerFanatics.Api/Dockerfile
+    ports:
+      - "5000:80"
+    depends_on:
+      migrations:
+        condition: service_completed_successfully
+    environment:
+      - POSTGRES=${POSTGRES}
